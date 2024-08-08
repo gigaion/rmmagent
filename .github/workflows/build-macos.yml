@@ -57,7 +57,7 @@ jobs:
           rmmagent/rmmagent-amd64-macos
           rmmagent/rmmagent-arm64-macos
         tag_name: ${{ github.event.inputs.tag_name }}
-        name: "Release MacOS"
+        name: ${{ github.event.inputs.tag_name }}
         draft: false
         prerelease: true
       env:
