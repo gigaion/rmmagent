@@ -2,7 +2,11 @@ name: Build Linux
 
 on:
   workflow_dispatch:
-  
+    inputs:
+      tag_name:
+        description: 'Tag to release under'
+        required: false
+        default: 'Unknown'
 jobs:
 
   build:
@@ -61,8 +65,8 @@ jobs:
           rmmagent-386-linux
           rmmagent-arm64-linux
           rmmagent-arm-linux
-        tag_name: testing
-        name: "Linux Release for Testing"
+        tag_name: ${{ github.event.inputs.tag_name }}
+        name: "Linux Release"
         draft: false
         prerelease: true
       env:
