@@ -2,7 +2,12 @@ name: Build Windows
 
 on:
   workflow_dispatch:
-  
+    inputs:
+      tag_name:
+        description: 'Tag to release under'
+        required: false
+        default: 'Unknown'
+        
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -40,8 +45,8 @@ jobs:
         files: |
           rmmagent-amd64-windows.exe
           rmmagent-386-windows.exe
-        tag_name: testing
-        name: "Windows Release for Testing"
+        tag_name: ${{ github.event.inputs.tag_name }}
+        name: "Windows Release"
         draft: false
         prerelease: true
       env:
