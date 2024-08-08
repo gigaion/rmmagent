@@ -46,7 +46,7 @@ jobs:
           rmmagent-amd64-windows.exe
           rmmagent-386-windows.exe
         tag_name: ${{ github.event.inputs.tag_name }}
-        name: "Windows Release"
+        name: ${{ github.event.inputs.tag_name }}
         draft: false
         prerelease: true
       env:
