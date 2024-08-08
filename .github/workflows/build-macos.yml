@@ -9,7 +9,12 @@ on:
   #pull_request:
   #  branches: [ "main" ]
   workflow_dispatch:
-  
+    inputs:
+      tag_name:
+        description: 'Tag to release under'
+        required: false
+        default: 'Unknown'
+        
 jobs:
 
   build:
@@ -51,8 +56,8 @@ jobs:
         files: |
           rmmagent/rmmagent-amd64-macos
           rmmagent/rmmagent-arm64-macos
-        tag_name: testing
-        name: "Release MacOS for Testing"
+        tag_name: ${{ github.event.inputs.tag_name }}
+        name: "Release MacOS"
         draft: false
         prerelease: true
       env:
